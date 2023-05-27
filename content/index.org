@@ -1,0 +1,9 @@
+#+TITLE: My thoughts
+#+AUTHOR: lalo
+#+TAGS: me
+
+Hi, my name is Adil. This is my website with my blog posts.
+
+* My posts
+
+ * [[./2023-05-27.org][Why I switched back from elpaca]]

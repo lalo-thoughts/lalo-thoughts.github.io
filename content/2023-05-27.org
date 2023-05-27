@@ -1,0 +1,9 @@
+#+TITLE: Why I decided to switch back from elpaca
+#+AUTHOR: lalo
+#+TAGS: emacs
+
+Builtin package manager =package.el= doesn't feel very comfortable. In fact there are many other package managers for our beloved GNU Emacs, that try to succeed over =package.el=. One of the newest ones is [[https://github.com/progfolio/elpaca][elpaca]]. In this blog post I will compare =elpaca= and =package.el= and show why I chose last one.
+
+* elpaca is cool
+
+TODO

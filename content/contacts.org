@@ -1,0 +1,11 @@
+#+TITLE: My contacts
+#+AUTHOR: lalo
+#+DATE: 2023-05-28
+#+TAGS: me
+
+My name is Adil Mokhammad. I live in Moscow. I'm an Applied Math student. I'm in active search for a job in software engineering or data science. You can contact me on:
+ * telegram: =@AdilMokhammad@=;
+ * mail: =0adilmohammad0@gmail.com=;
+ * github: [[https://github.com/LLLida][link]].
+
+[[./index.org][Home page]]

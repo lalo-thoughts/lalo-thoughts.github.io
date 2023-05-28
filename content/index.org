@@ -4,6 +4,6 @@
 
 Hi, my name is Adil. This is my website with my blog posts.
 
-* My posts
+* All posts
 
- * [[./2023-05-27.org][Why I switched back from elpaca]]
+ * [[./why-i-switched-back-from-elpaca.org][Why I switched back from elpaca]]

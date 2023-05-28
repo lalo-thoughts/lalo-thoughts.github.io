@@ -18,7 +18,7 @@
         "lalo-thoughts"
         :recursive t
         :base-directory "./content"
-        :publishing-directory "./public"
+        :publishing-directory "./docs"
         :publishing-function 'org-html-publish-to-html
         :with-author nil
         :with-creator t

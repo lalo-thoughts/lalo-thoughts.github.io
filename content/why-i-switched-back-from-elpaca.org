@@ -1,5 +1,6 @@
 #+TITLE: Why I decided to switch back from elpaca
 #+AUTHOR: lalo
+#+STARTUP: indent
 #+DATE: 2023-05-28
 #+TAGS: emacs
 
@@ -9,7 +10,7 @@ Builtin package manager =package.el= doesn't feel very comfortable.  In fact the
 
 =elpaca= is obviously a *great* effort.  It offers some awesome features usually not found in other package managers for Emacs.  Some of them are async package installation, builtin UI for browsing/searching packages etc.
 
-I loved the asynchronous package installation feature.  It's such a simple thing that we all needed.  For decades every Emacs user waits at least 10 seconds(usually much more) to install some packages.  =elpaca= makes package installation seamless.  I would even call it ~magical~.
+I loved the asynchronous package installation feature.  It's such a simple thing that we all needed.  For decades every Emacs user waits at least 10 seconds (usually much more) to install some packages.  =elpaca= makes package installation seamless.  I would even call it ~magical~.
 
 So why would I use anything else?  The package manager that we talked about looks like a charm.  Well...
 
@@ -23,7 +24,7 @@ Usually people say following things about =package.el=:
 
 In my opinion, =package.el= is not bad at all.  But before I say good things about builtin package manager let me describe my usual workflow.
 
-I launch Emacs once in two weeks or so; *startup time* doesn't matter for me.  I don't *update packages* frequently, in fact I do it once in 3 months or so.  I don't use many packages, I try to minimize amount of installed packages.  Considering those things you can tell that I'm pretty happy with =package.el=.
+I launch Emacs once in two weeks or so; *startup time* doesn't matter for me.  I don't *update packages* frequently, in fact I do it once in 3 months or so.  Also, I don't use many packages, I try to minimize amount of installed packages.  Considering those things you can tell that I'm pretty happy with =package.el=.
 
 I would like to point good things that other package managers for Emacs may lack:
  * nice and consistent UI for browsing/listing packages.  =elpaca= has one; it even provides some advanced search capabilities.  I found them awesome but didn't see any improvement in my daily Emacs usage;
@@ -32,7 +33,7 @@ I would like to point good things that other package managers for Emacs may lack
    #+begin_src emacs-lisp
      (use-package mines :elpaca t)
    #+end_src
-   so Emacs loads the package and then you can play the game of minesweeper.  Someone would say that I'm wrong and approach with =elpaca= gives you ~reproducible~ configs.  Ok, but I use only 1 computer.  I don't care about reproducibility; I care for my power user experience.
+   so Emacs loads the package and only then you can play the game of minesweeper.  Someone would say that I'm wrong and approach with =elpaca= gives you ~reproducible~ configs.  Ok, but I use only 1 computer.  I don't care about reproducibility; I care for my power user experience.
 
 * Conclusion
 
@@ -46,6 +47,6 @@ Recently I discovered that you can improve package installation time with the pa
 #+end_src
 Installation of big packages like =exwm=, =telega= or =magit= happens in ~seconds~.
 
-However it confuses me that only bytecomp happens asynchronously.  Why the process of downloading blocks my Emacs?  It doesn't affect Lisp machine, right?  I guess I want to much.
+However, it confuses me that only bytecomp happens asynchronously.  Why the process of downloading blocks my Emacs?  It doesn't affect Lisp machine, right?  I guess I want too much.
 
 [[./index.org][Home page]]

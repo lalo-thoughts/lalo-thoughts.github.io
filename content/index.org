@@ -1,11 +1,14 @@
 #+TITLE: My thoughts
 #+AUTHOR: lalo
+#+STARTUP: indent
 #+TAGS: me
 
-Hi, my name is Adil.  This is my website with my blog posts. I will mostly write about GNU Emacs, general programming, computer graphpics and maybe math.
+Hi, my name is *Adil*.  This is my website with my blog posts. I will mostly write about ~GNU Emacs~, ~general programming~, ~computer graphics~ and maybe ~math~.
 
-Unfortunately, this website doesn't have 'comments' section by now. If you have questions or want to contact me, visit this [[./contacts.org][page]].
+Unfortunately, this website doesn't have ~comments~ section by now. If you have questions or want to contact me, visit this [[./contacts.org][page]].
 
 * All posts
+
+** 2023
 
  * [[./why-i-switched-back-from-elpaca.org][Why I switched back from elpaca]]

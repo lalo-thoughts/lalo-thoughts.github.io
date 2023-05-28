@@ -1,6 +1,7 @@
 #+TITLE: My contacts
 #+AUTHOR: lalo
 #+DATE: 2023-05-28
+#+STARTUP: indent
 #+TAGS: me
 
 My name is Adil Mokhammad. I live in Moscow. I'm an applied math student. I'm in active search for a job in software engineering or data science. You can contact me on:

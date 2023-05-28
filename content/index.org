@@ -2,7 +2,9 @@
 #+AUTHOR: lalo
 #+TAGS: me
 
-Hi, my name is Adil. This is my website with my blog posts.
+Hi, my name is Adil.  This is my website with my blog posts. I will mostly write about GNU Emacs, general programming, computer graphpics and maybe math.
+
+Unfortunately, this website doesn't have 'comments' section by now. If you have questions or want to contact me, visit this [[./contacts.org][page]].
 
 * All posts
 

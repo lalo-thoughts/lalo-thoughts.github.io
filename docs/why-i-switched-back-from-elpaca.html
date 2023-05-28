@@ -13,18 +13,93 @@
 <div id="content" class="content">
 <h1 class="title">Why I decided to switch back from elpaca</h1>
 <p>
-Builtin package manager <code>package.el</code> doesn't feel very comfortable. In fact there are many other package managers for our beloved GNU Emacs, that try to succeed over <code>package.el</code>. One of the newest ones is <a href="https://github.com/progfolio/elpaca">elpaca</a>. In this blog post I will compare <code>elpaca</code> and <code>package.el</code> and show why I chose last one.
+Builtin package manager <code>package.el</code> doesn't feel very comfortable. In fact there are many other package managers for our beloved GNU Emacs, that try to succeed over <code>package.el</code>. One of the newest ones is <a href="https://github.com/progfolio/elpaca">elpaca</a>. In this blog post I will compare <code>elpaca</code> and <code>package.el</code> and show why I chose the last one.
 </p>
 
-<div id="outline-container-orgf87086d" class="outline-2">
-<h2 id="orgf87086d">elpaca is cool</h2>
-<div class="outline-text-2" id="text-orgf87086d">
+<div id="outline-container-org3218136" class="outline-2">
+<h2 id="org3218136">elpaca is cool</h2>
+<div class="outline-text-2" id="text-org3218136">
 <p>
-TODO
+<code>elpaca</code> is obviously a <b>great</b> effort. It offers some awesome features usually not found in other package managers for Emacs. Some of them are async package installation, builtin UI for browsing/searching packages etc.
 </p>
 
+<p>
+I loved the asynchronous package installation feature. It's such a simple thing that we all needed. For decades every Emacs user waits at least 10 seconds(usually much more) to install some packages. <code>elpaca</code> makes package installation seamless. I would even call it <code>magical</code>.
+</p>
 
+<p>
+So why would I use anything else? The package manager that we talked about looks like charm. Well&#x2026;
+</p>
+</div>
+</div>
 
+<div id="outline-container-org0a55544" class="outline-2">
+<h2 id="org0a55544">What's wrong with package.el</h2>
+<div class="outline-text-2" id="text-org0a55544">
+<p>
+Usually people say following things about <code>package.el</code>:
+</p>
+<ul class="org-ul">
+<li>you can't install/pin a specific version of a package;</li>
+<li>startup time is slow;</li>
+<li>can't install a package hosted on some repo;</li>
+<li>package installation is slow and blocks the main thread.</li>
+</ul>
+
+<p>
+In opinion, <code>package.el</code> is not bad at all. But before I say good things about builtin package manager let me describe my usual workflow.
+</p>
+
+<p>
+I launch Emacs once in two weeks or so; <b>startup time</b> doesn't matter for me. I don't <b>update packages</b> frequently, in fact I do it once in 3 months or so. I don't use many packages, I try to minimize amount of installed packages. Considering those things you can tell that I'm pretty happy with <code>package.el</code>.
+</p>
+
+<p>
+I would like to point good things that other package managers for Emacs may lack:
+</p>
+<ul class="org-ul">
+<li>nice and consistent UI for browsing/listing packages. <code>elpaca</code> has one; it even provides some advanced search capabilities. I found them awesome but didn't see any improvement in my daily Emacs life;</li>
+<li><code>popularity</code>. Most of the people use <code>package.el</code>; it's easier to fight with problems;</li>
+<li><p>
+all installed packages are loaded at startup. This is the thing that anoyed me with <code>elpaca</code>. Consider this case: you installed some package 6 months ago, let it be <a href="https://github.com/calancha/Minesweeper">mines.el</a>; you want to use that package <b>now</b>. <code>elpaca</code> won't let you do it because package are only loaded if you specify them in your init. You have to run
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">use-package</span> <span style="font-weight: bold; text-decoration: underline;">mines</span> <span style="font-weight: bold;">:elpaca</span> t)
+</pre>
+</div>
+<p>
+so Emacs load the package and then you can play the game of minesweeper. Someone would say that I'm wrong and approach with <code>elpaca</code> gives you <code>reproducible</code> configs. Ok, but I use only 1 computer. I don't care about reproducibility; I care for my power user experience.
+</p></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf53c96e" class="outline-2">
+<h2 id="orgf53c96e">Conclusion</h2>
+<div class="outline-text-2" id="text-orgf53c96e">
+<p>
+<code>package.el</code> felt like a return to home after some long months. Eventhough it's slow and not as flashy as other package managers the builtin package manager feels natural.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9c81d2d" class="outline-2">
+<h2 id="org9c81d2d">Extra</h2>
+<div class="outline-text-2" id="text-org9c81d2d">
+<p>
+Recently I discovered that you can improve package installation time with the package called <a href="https://github.com/jwiegley/emacs-async">async</a>. Bytecompilation of packages can be done asynchronously using a simple snippet of code:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(async-bytecomp-package-mode 1)
+</pre>
+</div>
+<p>
+Installation of big packages like <code>exwm</code>, <code>telega</code> or <code>magit</code> happens in <code>seconds</code>.
+</p>
+
+<p>
+However it confuses me that only bytecomp happens asynchronously. Why download blocks my Emacs? It doesn't affect Lisp machine, right? I guess I want to much.
+</p>
 
 <p>
 <a href="./index.html">Home page</a>

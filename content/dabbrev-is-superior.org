@@ -10,7 +10,7 @@ People love automatic code completion.  In modern text editors/IDEs you'll alway
 
 From Emacs manual: ~“dynamic abbrevs” allow the meanings of abbreviations to be determined automatically from the contents of the buffer, but dynamic abbrev expansion happens only when you request it explicitly~.
 
-In fact =dabbrev= is just a command that tries to complete the word you're typing by looking into current buffer and other buffers opened in Emacs.  This feature is blazingly fast, it works in any buffer and just does the job out of the box without any configuration.
+In fact =dabbrev= is just a command that tries to complete the word you're typing.  It looks into opened buffers and inserts first candidate.  By hitting =M-/= you can cycle through available completion condidates.  This feature is blazingly fast, it works in any buffer and just does the job out of the box without any configuration.
 
 There are a couple of other things that make this package even nicer.  First, you can complete a series of words by hitting =<SPC> M-/= after completion.  Second, it is possible to filter buffers where search will happen.
 

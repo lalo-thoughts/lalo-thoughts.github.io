@@ -29,11 +29,18 @@ Let's start with code.  I suggest to make functions for operations on numbers, s
 Here we defined our operations working on float numbers.  It is also possible to make operations for [[https://en.wikipedia.org/wiki/Multiplicative_group_of_integers_modulo_n][group of integers modulo 7]]:
 
 #+begin_src tuareg
+  let p = 7
   let (mod) x y = ((x mod y) + y) mod y
-  let num_add a b = (a + b) mod 7
-  let num_sub a b = (a - b) mod 7
-  let num_mul a b = (a * b) mod 7
-  let num_div a b = (a / b) mod 7
+  let num_add a b = (a + b) mod p
+  let num_sub a b = (a - b) mod p
+  let num_mul a b = (a * b) mod p
+  let num_div a b =
+    let rec pow_mod a b =
+      if b = 0 then 1
+      else if b = 1 then a mod p
+      else a * (pow_mod a (b-1)) in
+    let b_inv = pow_mod b (p-2) in
+    (a * b_inv) mod p
   let num_zero = 0
 #+end_src
 
@@ -73,7 +80,7 @@ We'd want a function that returns a polynomial of degree $n$ filled with zeros. 
     | n -> [num_zero] @ (zeros (n-1))
 #+end_src
 
-Unfortunately, I didn't find a function that drops last element of a list in OCaml's standard library.  It can be implemented like this:
+Unfortunately, I didn't find a function that drops last element of a list in =OCaml='s standard library.  It can be implemented like this:
 
 #+begin_src tuareg
   let rec drop_last a =
@@ -127,6 +134,6 @@ Having the =gcd_poly= function it's very easy to create a function that will com
 
 * Conclusion
 
-The problem from my homework was to compute *gcd* of 3 polynomials: $f(x) = x^4 - 2 x^2 + 4$, $g(x) = x^4 - 4 x^2 + 4 x - 1$, $h(x) = x^4 - 4 x^2 + 4 x - 1$.  Those polynomials operated on group of integers modulo 7.  The result is $-3x + 1$.
+The problem from my homework was to compute *gcd* of 3 polynomials: $f(x) = x^4 - 2 x^2 + 4$, $g(x) = x^4 - 4 x^2 + 4 x - 1$, $h(x) = x^4 - 4 x^2 + 4 x - 1$.  Those polynomials operated on group of integers modulo 7.  The result is $2x+2$.
 
-It was a fun experience.  I'm starting to like functional programming more and more.  It may be not very suitable for some types of problems.  However, I think for solving mathematical problems it fits the best.
+It was a fun experience.  I'm starting to like functional programming more and more.  Someone might say that it's not very suitable for some types of problems.  However, I think for solving mathematical problems functional programming fits the best.

@@ -52,9 +52,9 @@ Unfortunately, most of the time the math being programmed is limited by only num
 The problem that I'm solving here was my homework, except our teacher assumed that we're going to do all calculations by hand.  As a functional programming enthusiast I wanted to solve this problem using programming.  I used the <a href="https://ocaml.org">OCaml</a> programming language.  I'm new to this language, so my code might look a bit dumb.  Also, most of the functions listed here can be <a href="https://en.wikipedia.org/wiki/Tail_call">tail call optimized</a>, but performance was the last thing I cared of.
 </p>
 
-<div id="outline-container-orgc87801b" class="outline-2">
-<h2 id="orgc87801b">Introduction</h2>
-<div class="outline-text-2" id="text-orgc87801b">
+<div id="outline-container-org6fdf3c0" class="outline-2">
+<h2 id="org6fdf3c0">Introduction</h2>
+<div class="outline-text-2" id="text-org6fdf3c0">
 <p>
 Polynomials are mathematical objects that look like this: \(f(x) = a_0 + a_1 x + \dots + a_n x^n\).  Here \(a_0\), \(a_1\), \(\dots\) and \(a_n\) are elements of a set that we'll be calling a set of <b>numbers</b>.  Those numbers can be anything: integers, rational numbers, real numbers, complex numbers, you name it .  The only restriction is that this set must be a <a href="https://en.wikipedia.org/wiki/Ring_(mathematics)">ring</a> with commutative multiplication.  The number \(n\) in polynomial is called the <b>degree</b> of polynomial.  It's usually written as \(deg f\).
 </p>
@@ -65,9 +65,9 @@ With these facts in mind, it is possible to define polynomial addition, subtract
 </div>
 </div>
 
-<div id="outline-container-org125649e" class="outline-2">
-<h2 id="org125649e">Basic operations</h2>
-<div class="outline-text-2" id="text-org125649e">
+<div id="outline-container-orgce19723" class="outline-2">
+<h2 id="orgce19723">Basic operations</h2>
+<div class="outline-text-2" id="text-orgce19723">
 <p>
 Let's start with code.  I suggest to make functions for operations on numbers, so we'll be able to easily change the set that we're operating on.
 </p>
@@ -121,9 +121,9 @@ In our code we will use polynomials as lists.  First element of polynomial will 
 </div>
 </div>
 
-<div id="outline-container-org93d97cd" class="outline-2">
-<h2 id="org93d97cd">Helper functions</h2>
-<div class="outline-text-2" id="text-org93d97cd">
+<div id="outline-container-org8b99fee" class="outline-2">
+<h2 id="org8b99fee">Helper functions</h2>
+<div class="outline-text-2" id="text-org8b99fee">
 <p>
 We'd want to print our polynomials in nice way.  Here is a function that converts polynomial to string, skipping zeros:
 </p>
@@ -166,9 +166,9 @@ Unfortunately, I didn't find a function that drops last element of a list in <co
 </div>
 </div>
 
-<div id="outline-container-orga7286f2" class="outline-2">
-<h2 id="orga7286f2">Division</h2>
-<div class="outline-text-2" id="text-orga7286f2">
+<div id="outline-container-org81b8c5e" class="outline-2">
+<h2 id="org81b8c5e">Division</h2>
+<div class="outline-text-2" id="text-org81b8c5e">
 <p>
 Okay, we're faced with a serious task.  I think, if we were using imperative language it'd be hard to solve our task.  We would write nested for loops with counters which most likely would lead to a bug.  With <code>OCaml</code> I wrote function for division first try.  It's 10 lines of code.  I think one great thing about functional programming is that it forces you to reuse code by using recursion.  This approach perfectly fits higher level math.  Anyway, here's code:
 </p>
@@ -193,9 +193,9 @@ This function takes two polynomials and returns tuple consisting of <code>quotie
 </div>
 </div>
 
-<div id="outline-container-org545a953" class="outline-2">
-<h2 id="org545a953">Greatest Common Divisor</h2>
-<div class="outline-text-2" id="text-org545a953">
+<div id="outline-container-orgb4bbf5b" class="outline-2">
+<h2 id="orgb4bbf5b">Greatest Common Divisor</h2>
+<div class="outline-text-2" id="text-orgb4bbf5b">
 <p>
 This is just a classic Euclidean algorithm, nothing special about it:
 </p>
@@ -230,9 +230,9 @@ Having the <code>gcd_poly</code> function it's very easy to create a function th
 </div>
 </div>
 
-<div id="outline-container-org0646eea" class="outline-2">
-<h2 id="org0646eea">Conclusion</h2>
-<div class="outline-text-2" id="text-org0646eea">
+<div id="outline-container-orgacc6979" class="outline-2">
+<h2 id="orgacc6979">Conclusion</h2>
+<div class="outline-text-2" id="text-orgacc6979">
 <p>
 The problem from my homework was to compute <b>gcd</b> of 3 polynomials: \(f(x) = x^4 - 2 x^2 + 4\), \(g(x) = x^4 - 4 x^2 + 4 x - 1\), \(h(x) = x^4 - 4 x^2 + 4 x - 1\).  Those polynomials operated on group of integers modulo 7.  The result is \(2x+2\).
 </p>

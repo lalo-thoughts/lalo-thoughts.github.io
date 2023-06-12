@@ -1,0 +1,58 @@
+#+TITLE: On barycentric coordinates
+#+AUTHOR: lalo
+#+STARTUP: indent
+#+DATE: 2023-06-12
+#+TAGS: graphics math
+
+When passing some attributes like or texture coordinates from vertex shaders to fragment shaders GPUs magically interpolate these values. It's interesting how one might implement such a feature. In this article we'll look at barycentric coordinate system; which is one of the ways to compute attributes for pixels inside a triangle.
+
+* Barycentric
+
+Let's solve a simple task that I faced when I was writing my small software rasterizer. Given the depth values for a triangle's vertices how do we compute depth values for pixels in that triangle?
+
+[[../media/barycentric_triangle.png][How do we compute depth value for a point (x, y)?]]
+
+There's very elegant solution to this problem: using a different ~coordinate system~. From wikipedia: "The barycentric coordinates of a point can be interpreted as masses placed at the vertices of the simplex(in our case triangle), such that the point is the center of mass (or barycenter) of these masses".
+
+[[../media/barycentric_diagram.png][A simple example]]
+
+Given depth values of triangle's corners $d_1$, d_2$, $d_3$ and barycentric coordinates of a point $z_1$, $z_2$, $z_3$ we can calculate depth value for that point.
+
+\[
+d = d_1 z_1 + d_2 z_2 + d_3 z_3
+\]
+
+It is also very simple to convert our point $(x, y)$ to barycentric coordinates. Let's say
+\[
+A = \begin{vmatrix}
+     x_1 & y_1 & 1\\
+     x_2 & y_2 & 1\\
+     x_3 & y_3 & 1
+     \end{vmatrix}
+\],
+\[
+A_1 = \begin{vmatrix}
+     x & y & 1\\
+     x_2 & y_2 & 1\\
+     x_3 & y_3 & 1
+     \end{vmatrix}
+\],
+\[
+A_2 = \begin{vmatrix}
+     x_1 & y_1 & 1\\
+     x & y & 1\\
+     x_3 & y_3 & 1
+     \end{vmatrix}
+\],
+\[
+A_3 = \begin{vmatrix}
+     x_1 & y_1 & 1\\
+     x_2 & y_2 & 1\\
+     x & y & 1
+     \end{vmatrix}
+\].
+Having those determinants we can calculate the barycentric coordinates: $z_1 = \frac{A_1}{A}$, $z_2 = \frac{A_2}{A}$, $z_3 = \frac{A_3}{A}$.
+
+* Conclusion
+
+This was a small article about a simple yet very useful mathematical object: barycentric coordinate system. I wasn't familiar with until yesterday which is kind of embarassing. Certainly there are much more applications for barycentric coordinates. Hopefully I'll write about them in future 🙂

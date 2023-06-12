@@ -10,11 +10,13 @@ When passing some attributes like or texture coordinates from vertex shaders to 
 
 Let's solve a simple task that I faced when I was writing my small software rasterizer. Given the depth values for a triangle's vertices how do we compute depth values for pixels in that triangle?
 
-[[../docs/media/barycentric_triangle.png][How do we compute depth value for a point (x, y)?]]
+#+CAPTION: How do we compute depth value for a point (x, y)?
+[[../docs/media/barycentric_triangle.png]]
 
 There's very elegant solution to this problem: using a different ~coordinate system~. From wikipedia: "The barycentric coordinates of a point can be interpreted as masses placed at the vertices of the simplex(in our case triangle), such that the point is the center of mass (or barycenter) of these masses".
 
-[[../content/media/barycentric_diagram.png][A simple example]]
+#+CAPTION: A simple example
+[[../docs/media/barycentric_diagram.png]]
 
 Given depth values of triangle's corners $d_1$, $d_2$, $d_3$ and barycentric coordinates of a point $z_1$, $z_2$, $z_3$ we can calculate depth value for that point.
 

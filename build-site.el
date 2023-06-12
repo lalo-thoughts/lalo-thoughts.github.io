@@ -24,7 +24,9 @@
         :with-creator t
         :with-toc nil
         :section-numbers nil
-        :time-stamp-file nil)))
+        :time-stamp-file nil
+        :html-html5-fancy t
+        :html-doctype "html5")))
 
 (org-publish-all t)
 

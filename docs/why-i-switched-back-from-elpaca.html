@@ -1,9 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Why I decided to switch back from elpaca</title>
 <meta name="generator" content="Org Mode" />
@@ -11,14 +9,15 @@
 </head>
 <body>
 <div id="content" class="content">
+<header>
 <h1 class="title">Why I decided to switch back from elpaca</h1>
-<p>
+</header><p>
 Builtin package manager <code>package.el</code> doesn't feel very comfortable.  In fact there are many other package managers for our beloved GNU Emacs, that try to succeed over <code>package.el</code>.  One of the newest ones is <a href="https://github.com/progfolio/elpaca">elpaca</a>.  In this blog post I will compare <code>elpaca</code> and <code>package.el</code> and show why I chose the last one.
 </p>
 
-<div id="outline-container-org80bfaeb" class="outline-2">
-<h2 id="org80bfaeb">elpaca is cool</h2>
-<div class="outline-text-2" id="text-org80bfaeb">
+<div id="outline-container-org8c47b96" class="outline-2">
+<h2 id="org8c47b96">elpaca is cool</h2>
+<div class="outline-text-2" id="text-org8c47b96">
 <p>
 <code>elpaca</code> is obviously a <b>great</b> effort.  It offers some awesome features usually not found in other package managers for Emacs.  Some of them are async package installation, builtin UI for browsing/searching packages etc.
 </p>
@@ -33,9 +32,9 @@ So why would I use anything else?  The package manager that we talked about look
 </div>
 </div>
 
-<div id="outline-container-orgba0a105" class="outline-2">
-<h2 id="orgba0a105">What's wrong with package.el</h2>
-<div class="outline-text-2" id="text-orgba0a105">
+<div id="outline-container-orge0eaf1a" class="outline-2">
+<h2 id="orge0eaf1a">What's wrong with package.el</h2>
+<div class="outline-text-2" id="text-orge0eaf1a">
 <p>
 Usually people say following things about <code>package.el</code>:
 </p>
@@ -74,18 +73,18 @@ so Emacs loads the package and only then you can play the game of minesweeper.  
 </div>
 </div>
 
-<div id="outline-container-org2887be8" class="outline-2">
-<h2 id="org2887be8">Conclusion</h2>
-<div class="outline-text-2" id="text-org2887be8">
+<div id="outline-container-org426586c" class="outline-2">
+<h2 id="org426586c">Conclusion</h2>
+<div class="outline-text-2" id="text-org426586c">
 <p>
 <code>package.el</code> felt like a return to home after some long months.  Eventhough it's slow and not as flashy as other package managers the builtin package manager feels natural.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgbc87b3f" class="outline-2">
-<h2 id="orgbc87b3f">Extra</h2>
-<div class="outline-text-2" id="text-orgbc87b3f">
+<div id="outline-container-org1e22471" class="outline-2">
+<h2 id="org1e22471">Extra</h2>
+<div class="outline-text-2" id="text-org1e22471">
 <p>
 Recently I discovered that you can improve package installation time with the package called <a href="https://github.com/jwiegley/emacs-async">async</a>.  Bytecompilation of packages can be done asynchronously using a simple snippet of code:
 </p>

@@ -29,28 +29,28 @@ A = \begin{vmatrix}
      x_2 & y_2 & 1\\
      x_3 & y_3 & 1
      \end{vmatrix}
-\],
+\]
 \[
 A_1 = \begin{vmatrix}
      x & y & 1\\
      x_2 & y_2 & 1\\
      x_3 & y_3 & 1
      \end{vmatrix}
-\],
+\]
 \[
 A_2 = \begin{vmatrix}
      x_1 & y_1 & 1\\
      x & y & 1\\
      x_3 & y_3 & 1
      \end{vmatrix}
-\],
+\]
 \[
 A_3 = \begin{vmatrix}
      x_1 & y_1 & 1\\
      x_2 & y_2 & 1\\
      x & y & 1
      \end{vmatrix}
-\].
+\]
 Having those determinants we can calculate the barycentric coordinates: $z_1 = \frac{A_1}{A}$, $z_2 = \frac{A_2}{A}$, $z_3 = \frac{A_3}{A}$.
 
 * Conclusion

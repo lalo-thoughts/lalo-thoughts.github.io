@@ -14,3 +14,4 @@ Unfortunately, this website doesn't have ~comments~ section by now.  If you have
  * [[./why-i-switched-back-from-elpaca.org][Why I switched back from elpaca]]
  * [[./dabbrev-is-superior.org][dabbrev is superior]]
  * [[./computing-gcd-of-n-polynomials.org][Computing Greatest Common Divisor of N polynomials]]
+ * [[./on-barycentric-coordinates.org][On barycentric coordinates]]

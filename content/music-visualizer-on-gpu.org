@@ -1,0 +1,62 @@
+#+TITLE: Music visualizer on GPU
+#+AUTHOR: lalo
+#+STARTUP: indent
+#+DATE: 2023-07-24
+#+TAGS: graphics math
+
+How you ever wondered how music visualizers work? It's actually kind of simple and involves using some neat instrument called =fourier transform=.
+
+* Fourier transform
+
+More than 200 years ago Fourier invented a thing that has a *lot* of use cases. It has some beatiful properties which we won't talk about in this article.
+
+An interesting application of fourier transform is sound processing. Let's talk about a problem. Imagine you have a sound. Sound is a sum of bunch of waves moving in air. Let's say you're sending that sound to somewhere as a digital signal and you want to remove a part from that sound, let's say it's some noise. How would you remove it?
+
+To solve this problem correctly we first need to define what is that part that we want to remove. Well it's a wave (or a series of waves) that has some specific freqeuncy. So our problem becomes: how would you remove a wave from a sum of waves? Of course, you need to detect the frequency of that wave first, otherwise I wouldn't be writing this article.
+
+Here comes the fourier transform. So you if you plot your sound on graph you'd probably draw it with horizontal axis being =time= and vertical axis being =amplitude=. People usually call this way of representing it as =time domain=. If we apply fourier transform to sound you plotted we would get that sound in =frequency domain=. That's it: =frequency= is horizontal axis and =amplitude= is the vertical one. This way you get distribution of frequencies that the sound has.
+
+Okay, so we got the "frequency domain", we even removed a frequency we don't like. What's next? The answer is =inverse fourier transform=. It converts your function from =frequency domain= to =time domain=. What an elegant solution.
+
+I've yet to see more and more applications of this beatiful subject.
+
+Ehh.. anyway, let's get back to music visualisation.
+
+* Algorithm
+
+Most of music visualizers just draw frequencies in sound in a cool way. We'll be no different.
+
+Let's define how our program will work:
+1. Read music from file. It'll be represented a series of =samples= in time. Those are amplitudes a certain moment.
+2. Send those samples by chunks to GPU. 60 times per second is good.
+3. Do fourier transform on GPU. We get frequencies involved in that chunk.
+4. Plot those frequencies on screen.
+5. +Go sleep+
+
+The interesting part is =3=. It's possible that you, my reader, is expecting me to write a lot of text about how did implement a smart algorithm called =Fast Fourier transform=. I might dissapoint you, but we'll do a simple =Discrete Fourier transform=.
+
+We'll do the transform in a compute shader. Each thread will be computing amplitude for a specific frequency. Here's simplifed version of that compute shader(pseudocode):
+
+#+begin_src glsl
+  uint index = gl_GlobalInvocationID.x;
+
+  float inv_N = 1.0 / in_samples;
+  vec2 X = vec2(0.0);
+  float k = index;
+  for (uint i = 0; i < num_samples; i++) {
+    X.x += samples[i] * cos(-2.0 *  PI * k * float(i) * inv_N);
+    X.y += samples[i] * sin(-2.0 *  PI * k * float(i) * inv_N);
+  }
+  X *= inv_N;
+
+  float ampl = length(X);
+
+  // generate some vertices to visualize this amplitude
+  // ....
+#+end_src
+
+Very simple.
+
+* Conclusion
+
+You can see my code [[https://github.com/LLLida/lida_gfx#equalizer][here]]. Eventhough a slow version of fourier transform is used it's still pretty fast because it runs on GPU. GPU's are beasts if you know how to use them.

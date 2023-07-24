@@ -15,3 +15,4 @@ Unfortunately, this website doesn't have ~comments~ section by now.  If you have
  * [[./dabbrev-is-superior.org][dabbrev is superior]]
  * [[./computing-gcd-of-n-polynomials.org][Computing Greatest Common Divisor of N polynomials]]
  * [[./on-barycentric-coordinates.org][On barycentric coordinates]]
+ * [[./music-visualizer-on-gpu.org][Music visualizer on GPU]]

@@ -26,7 +26,14 @@
         :section-numbers nil
         :time-stamp-file nil
         :html-html5-fancy t
-        :html-doctype "html5")))
+        :html-doctype "html5")
+       ;; (list
+       ;;  "images"
+       ;;  :recursive t
+       ;;  :base-directory "./media"
+       ;;  :publishing-directory "./docs/media"
+       ;;  :publishing-function 'org-publish-attachment)
+       ))
 
 (org-publish-all t)
 

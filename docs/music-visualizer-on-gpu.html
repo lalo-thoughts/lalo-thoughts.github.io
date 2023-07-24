@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Music visualizer on GPU</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<header>
+<h1 class="title">Music visualizer on GPU</h1>
+</header><p>
+How you ever wondered how music visualizers work? It's actually kind of simple and involves using some neat instrument called <code>fourier transform</code>.
+</p>
+
+<div id="outline-container-org1b19fdb" class="outline-2">
+<h2 id="org1b19fdb">Fourier transform</h2>
+<div class="outline-text-2" id="text-org1b19fdb">
+<p>
+More than 200 years ago Fourier invented a thing that has a <b>lot</b> of use cases. It has some beatiful properties which we won't talk about in this article.
+</p>
+
+<p>
+An interesting application of fourier transform is sound processing. Let's talk about a problem. Imagine you have a sound. Sound is a sum of bunch of waves moving in air. Let's say you're sending that sound to somewhere as a digital signal and you want to remove a part from that sound, let's say it's some noise. How would you remove it?
+</p>
+
+<p>
+To solve this problem correctly we first need to define what is that part that we want to remove. Well it's a wave (or a series of waves) that has some specific freqeuncy. So our problem becomes: how would you remove a wave from a sum of waves? Of course, you need to detect the frequency of that wave first, otherwise I wouldn't be writing this article.
+</p>
+
+<p>
+Here comes the fourier transform. So you if you plot your sound on graph you'd probably draw it with horizontal axis being <code>time</code> and vertical axis being <code>amplitude</code>. People usually call this way of representing it as <code>time domain</code>. If we apply fourier transform to sound you plotted we would get that sound in <code>frequency domain</code>. That's it: <code>frequency</code> is horizontal axis and <code>amplitude</code> is the vertical one. This way you get distribution of frequencies that the sound has.
+</p>
+
+<p>
+Okay, so we got the "frequency domain", we even removed a frequency we don't like. What's next? The answer is <code>inverse fourier transform</code>. It converts your function from <code>frequency domain</code> to <code>time domain</code>. What an elegant solution.
+</p>
+
+<p>
+I've yet to see more and more applications of this beatiful subject.
+</p>
+
+<p>
+Ehh.. anyway, let's get back to music visualisation.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge606116" class="outline-2">
+<h2 id="orge606116">Algorithm</h2>
+<div class="outline-text-2" id="text-orge606116">
+<p>
+Most of music visualizers just draw frequencies in sound in a cool way. We'll be no different.
+</p>
+
+<p>
+Let's define how our program will work:
+</p>
+<ol class="org-ol">
+<li>Read music from file. It'll be represented a series of <code>samples</code> in time. Those are amplitudes a certain moment.</li>
+<li>Send those samples by chunks to GPU. 60 times per second is good.</li>
+<li>Do fourier transform on GPU. We get frequencies involved in that chunk.</li>
+<li>Plot those frequencies on screen.</li>
+<li><del>Go sleep</del></li>
+</ol>
+
+<p>
+The interesting part is <code>3</code>. It's possible that you, my reader, is expecting me to write a lot of text about how did implement a smart algorithm called <code>Fast Fourier transform</code>. I might dissapoint you, but we'll do a simple <code>Discrete Fourier transform</code>.
+</p>
+
+<p>
+We'll do the transform in a compute shader. Each thread will be computing amplitude for a specific frequency. Here's simplifed version of that compute shader(pseudocode):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-glsl"><span style="font-weight: bold; text-decoration: underline;">uint</span> index = <span style="font-weight: bold; font-style: italic;">gl_GlobalInvocationID</span>.x;
+
+<span style="font-weight: bold; text-decoration: underline;">float</span> inv_N = 1.0 / in_samples;
+<span style="font-weight: bold; text-decoration: underline;">vec2</span> X = <span style="font-weight: bold; text-decoration: underline;">vec2</span>(0.0);
+<span style="font-weight: bold; text-decoration: underline;">float</span> k = index;
+<span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">uint</span> i = 0; i &lt; num_samples; i++) {
+  X.x += samples[i] * <span style="font-weight: bold;">cos</span>(-2.0 *  PI * k * <span style="font-weight: bold; text-decoration: underline;">float</span>(i) * inv_N);
+  X.y += samples[i] * <span style="font-weight: bold;">sin</span>(-2.0 *  PI * k * <span style="font-weight: bold; text-decoration: underline;">float</span>(i) * inv_N);
+}
+X *= inv_N;
+
+<span style="font-weight: bold; text-decoration: underline;">float</span> ampl = <span style="font-weight: bold;">length</span>(X);
+
+<span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">generate some vertices to visualize this amplitude</span>
+<span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">....</span>
+</pre>
+</div>
+
+<p>
+Very simple.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org863ca99" class="outline-2">
+<h2 id="org863ca99">Conclusion</h2>
+<div class="outline-text-2" id="text-org863ca99">
+<p>
+You can see my code <a href="https://github.com/LLLida/lida_gfx#equalizer">here</a>. Eventhough a slow version of fourier transform is used it's still pretty fast because it runs on GPU. GPU's are beasts if you know how to use them.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2023-06-12</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

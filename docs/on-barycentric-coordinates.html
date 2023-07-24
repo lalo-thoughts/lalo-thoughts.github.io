@@ -47,14 +47,14 @@
 When passing some attributes like or texture coordinates from vertex shaders to fragment shaders GPUs magically interpolate these values. It's interesting how one might implement such a feature. In this article we'll look at barycentric coordinate system; which is one of the ways to compute attributes for pixels inside a triangle.
 </p>
 
-<div id="outline-container-org622b4e8" class="outline-2">
-<h2 id="org622b4e8">Barycentric</h2>
-<div class="outline-text-2" id="text-org622b4e8">
+<div id="outline-container-org2174b2b" class="outline-2">
+<h2 id="org2174b2b">Barycentric</h2>
+<div class="outline-text-2" id="text-org2174b2b">
 <p>
 Let's solve a simple task that I faced when I was writing my small software rasterizer. Given the depth values for a triangle's vertices how do we compute depth values for pixels in that triangle?
 </p>
 
-<div class="HTML" id="org6795f8c">
+<div class="HTML" id="org56e8d66">
 <p>
 &lt;figure&gt;
 &lt;img src="media/barycentric<sub>triangle.png</sub>"/&gt;
@@ -68,7 +68,7 @@ Let's solve a simple task that I faced when I was writing my small software rast
 There's very elegant solution to this problem: using a different <code>coordinate system</code>. From wikipedia: "The barycentric coordinates of a point can be interpreted as masses placed at the vertices of the simplex(in our case triangle), such that the point is the center of mass (or barycenter) of these masses".
 </p>
 
-<div class="HTML" id="org266982d">
+<div class="HTML" id="orgf78e6d7">
 <p>
 &lt;figure&gt;
 &lt;img src="media/barycentric<sub>diagram.png</sub>"/&gt;
@@ -123,9 +123,9 @@ Having those determinants we can calculate the barycentric coordinates: \(z_1 = 
 </div>
 </div>
 
-<div id="outline-container-org54c4965" class="outline-2">
-<h2 id="org54c4965">Conclusion</h2>
-<div class="outline-text-2" id="text-org54c4965">
+<div id="outline-container-org066e828" class="outline-2">
+<h2 id="org066e828">Conclusion</h2>
+<div class="outline-text-2" id="text-org066e828">
 <p>
 This was a small article about a simple yet very useful mathematical object: barycentric coordinate system. I wasn't familiar with until yesterday which is kind of embarassing. Certainly there are much more applications for barycentric coordinates. Hopefully I'll write about them in future 🙂
 </p>
@@ -134,7 +134,7 @@ This was a small article about a simple yet very useful mathematical object: bar
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2023-06-12</p>
-<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.5)</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
 </div>
 </body>
 </html>
